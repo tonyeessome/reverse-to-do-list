@@ -36,7 +36,7 @@ jobs:
 
       - name: Merge Dev to Main
         if: success()
-        uses: devops-actions/merge-branch@v2
+        uses: devmasx/merge-branch@master
         with:
           from_branch: dev
           target_branch: main
