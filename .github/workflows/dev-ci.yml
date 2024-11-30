@@ -1,6 +1,9 @@
 name: CI/CD for Dev
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - dev
@@ -38,6 +41,8 @@ jobs:
         if: success()
         uses: devmasx/merge-branch@master
         with:
+          type: now
           from_branch: dev
           target_branch: main
+          message: Merge staging into uat
           github_token: ${{ secrets.GITHUB_TOKEN }}
