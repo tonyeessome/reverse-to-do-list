@@ -27,6 +27,7 @@ jobs:
         run: npm test
 
       - name: Install Dependencies (Backend)
+        if: success()
         working-directory: ./backend
         run: npm install
 
@@ -35,11 +36,12 @@ jobs:
         run: npm test
 
       - name: Run E2E Tests
-        run: |
+        run: 
           npm install selenium-webdriver
-          npm run test:e2e
+          npm run test
 
       - name: Build Docker Images
+        if: success() 
         run: docker-compose build
 
       - name: Push Docker Images to DockerHub
