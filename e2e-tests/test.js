@@ -12,7 +12,7 @@ describe('E2E Test', function () {
         let options = new chrome.Options();
         options.addArguments('--headless'); // Run in headless mode
         // create a detached driver
-        driver = await new Builder().forBrowser(Browser.FIREFOX).setChromeOptions(options).build()
+        driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build()
         // set the driver to be detached from the browser
         driver.manage().setTimeouts({ implicit: 0 })
         vars = {}
