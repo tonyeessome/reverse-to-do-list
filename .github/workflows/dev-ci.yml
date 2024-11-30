@@ -41,5 +41,5 @@ jobs:
           type: now
           from_branch: dev
           target_branch: main
-          message: Merge staging into uat
+          message: Merge my-feature into dev
           github_token: ${{ secrets.GITHUB_TOKEN }}
