@@ -36,8 +36,10 @@ jobs:
 
       - name: Merge Dev to Main
         if: success()
-        uses: devops-actions/merge-branch@v2
+        uses: devmasx/merge-branch@master
         with:
+          type: now
           from_branch: dev
           target_branch: main
+          message: Merge staging into uat
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -41,6 +41,7 @@ function App() {
       .then((response) => setReport(response.data))
       .catch((error) => console.error(error));
   };
+// Modification pour tester CI/CD
 
   return (
     <div>
