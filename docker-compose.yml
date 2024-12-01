@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_URL: http://localhost:3001
-    image: ${DOCKER_HUB_ID}/reverse-to-do-list-frontend:latest
+    image: ${DOCKER_USERNAME}/reverse-to-do-list-frontend:latest
     container_name: frontend
     restart: always
     ports:
