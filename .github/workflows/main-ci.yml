@@ -64,6 +64,8 @@ jobs:
         
       - name: Build Docker Images
         if: success() 
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker-compose build
 
       - name: Push Docker Images to DockerHub
