@@ -15,7 +15,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: ${DOCKER_HUB_ID}/reverse-to-do-list-backend:latest
+    image: ${DOCKER_USERNAME}/reverse-to-do-list-backend:latest
     container_name: backend
     restart: always
     ports:
