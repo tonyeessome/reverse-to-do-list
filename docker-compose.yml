@@ -15,10 +15,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: ${DOCKER_HUB_ID}/reverse-to-do-list-backend:latest
     container_name: backend
     restart: always
     ports:
-      - "3001:3001"
+      - "3002:3001"
     depends_on:
       - mongodb
     environment:
@@ -32,6 +33,7 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_URL: http://localhost:3001
+    image: ${DOCKER_HUB_ID}/reverse-to-do-list-frontend:latest
     container_name: frontend
     restart: always
     ports:
