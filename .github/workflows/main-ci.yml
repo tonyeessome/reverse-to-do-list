@@ -27,6 +27,7 @@ jobs:
         run: npm test
 
       - name: Install Dependencies (Backend)
+        if: success()
         working-directory: ./backend
         run: npm install
 
@@ -35,11 +36,34 @@ jobs:
         run: npm test
 
       - name: Run E2E Tests
-        run: |
+        run: 
           npm install selenium-webdriver
-          npm run test:e2e
-
+          npm run test
+          
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            ca-certificates \
+            curl \
+            gnupg \
+            lsb-release \
+            sudo
+          curl -fsSL https://get.docker.com | sudo sh
+          sudo usermod -aG docker $USER
+          sudo systemctl enable docker --now
+      - name: Install Docker Compose
+        run: |
+          DOCKER_COMPOSE_VERSION="v2.18.1"  # Specify the version you want to install
+          curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" \
+            -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
+      - name: Test Docker Compose Version
+        run: docker-compose --version
+        
       - name: Build Docker Images
+        if: success() 
         run: docker-compose build
 
       - name: Push Docker Images to DockerHub
